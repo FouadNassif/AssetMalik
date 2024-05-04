@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="myTime">Select a time:</label>
+    <input type="time" readonly id="t">
+    <div>
+        <button onclick="save(this)">10:00</button>
+        <button onclick="save(this)">10:30</button>
+        <button onclick="save(this)">11:00</button>
+        <button onclick="save(this)">11:30</button>
+        <button onclick="save(this)">12:00</button>
+    </div>
+
+    <script>
+        let t = document.getElementById("t");
+        function save(button) {
+            t.value = button.textContent;
+        }
+    </script>
+
+    <style>
+        div {
+            display: flex;
+        }
+
+        div button {
+            width: 100px;
+            height: 30px;
+            color: #093136;
+        }
+    </style>
+</body>
+
+</html>

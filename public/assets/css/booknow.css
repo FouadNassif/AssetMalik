@@ -1,0 +1,27 @@
+:root {
+    --Primary : #0D484F;
+    --Secondary: #F5D57E;
+    --Dark: #0E0E0E;
+    --HS: #ecc760;
+    --F: #086F7B;
+}
+
+
+.flatpickr-calendar {
+    background-color: transparent;
+    border: 2px solid var(--Secondary);
+    width: 100%;
+}
+
+.flatpickr-calendar span {
+    color: white;
+    font-weight: 900;
+    outline: 0;
+    box-shadow: none;
+}
+
+.flatpickr-calendar span:hover {
+    background-color: var(--Secondary);
+    color: var(--Primary);
+    border: 0;
+}
