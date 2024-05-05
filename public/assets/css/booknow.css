@@ -6,13 +6,26 @@
     --F: #086F7B;
 }
 
-
+/* 
 .flatpickr-calendar {
     background-color: transparent;
-    border: 2px solid var(--Secondary);
     width: 100%;
 }
-
+.flatpickr-weekdaycontainer span{
+    text-align: center;
+    color: #ecc760;
+}
+.flatpickr-weekdaycontainer{
+    display: flex;
+}
+.flatpickr-current-month {
+    color: var(--HS);
+    font-weight: 900;
+}
+.flatpickr-monthDropdown-month,
+.flatpickr-monthDropdown-months option{
+    background-color: var(--Primary);
+}
 .flatpickr-calendar span {
     color: white;
     font-weight: 900;
@@ -20,8 +33,11 @@
     box-shadow: none;
 }
 
+.flatpickr-day, .nextMonthDay{
+    color: blue;
+}
+
 .flatpickr-calendar span:hover {
     background-color: var(--Secondary);
     color: var(--Primary);
-    border: 0;
-}
+} */

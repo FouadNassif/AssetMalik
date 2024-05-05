@@ -21,17 +21,24 @@ export default {
         'SImg': '250px',
         'LImg': '525px',
         'soc': '40px',
+        '200p': '200px',
+        '30p': '30px',
       },
       height: {
         'BrCard': '400px',
         'SImg': '250px',
         'LImg': '525px',
         'soc': '40px',
+        '200p': '200px',
+        '30p': '30px',
       },
       fontFamily: {
         'Def': 'Hammersmith One',
         'Lit': ["Lilita One", "sans-serif"],
       },
+      shadowColor: {
+        'S': "F5D57E",
+      }
     },
     plugins: [],
   }

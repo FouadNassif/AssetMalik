@@ -59,12 +59,13 @@
                 <input type="text" value="" name="workerName" id="WN" hidden>
                 @if ($workers->count() > 0)
                     @foreach ($workers as $worker)
-                        <button type="button" value="{{ $worker->name }}" onclick="addWorker(this)" class="w-60 h-80 border-S rounded-2xl border-2 p-4 mr-5 mb-5 cursor-pointer z-0 hover:bg-PHover">
+                        <button type="button" value="{{ $worker->name }}" onclick="addWorker(this)"
+                            class="w-60 h-80 border-S rounded-2xl border-2 p-4 mr-5 mb-5 cursor-pointer z-0 hover:bg-PHover">
                             <img src="{{ asset('assets/img/G1.jpeg') }}" alt="" class="w-52 h-52 rounded-t-xl">
                             <h2>{{ $worker->name }}</h2>
                             <h3>Experience: {{ $worker->experience }}</h3>
                             <p>Bio: {{ $worker->bio }}</p>
-                        </butotn>
+                            </butotn>
                     @endforeach
                 @endif
             </div>
@@ -103,7 +104,12 @@
 
     flatpickr("#calendar-input", {
         inline: true,
-        disable: bookedDates,
+        minDate: "today",
+        disable: [
+            function(date) {
+                return date.getDay() === 1; // Sunday is represented by 0
+            }
+        ],
         dateFormat: "Y-m-d",
         onChange: function(selectedDates, dateStr, instance) {
             while (timeInputCon.firstChild) {
@@ -163,10 +169,10 @@
         inputTime.value = button.textContent;
     }
 
-    function addWorker(bt){
+    function addWorker(bt) {
         document.getElementById("WN").value = bt.value;
         let buttons = document.querySelectorAll("#wcon button");
-        for(but of buttons){
+        for (but of buttons) {
             but.style.backgroundColor = "transparent";
         }
         bt.style.backgroundColor = "#093136";

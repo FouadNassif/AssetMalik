@@ -1,5 +1,5 @@
 <div class="bg-P w-full h-auto p-7 mt-5 gallery">
-    <h1 class="text-2xl text-S font-bold">Gallery</h1>
+    <a class="text-2xl text-S font-bold" href="/gallery">Gallery ></a>
     <div class="flex ml-10 mt-5">
         <div class="flex flex-col">
             <div class="flex">

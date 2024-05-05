@@ -23,13 +23,13 @@ sticky">
         <li class="ml-5">
             <a href="/contact">CONTACT US</a>
         </li>
-        
+
     </ul>
     <a class="mr-64" href="/" id="logo"><img src="{{ asset('assets/svg/Logo.svg') }}" alt=""></a>
-    <div>
+    <div class="flex my-2">
         <a href="/profile"><img src="{{ asset('assets/svg/Profile.svg') }}" alt=""></a>
-        <a href="/BookNow" class="mr-5 border-4  border-S px-4 py-1 hover:bg-S hover:text-P">Book Now</a>
-        <a href="" class="mr-5">Cart</a>
+        <a href="/BookNow" class="mx-5 border-4 border-S px-4 py-1 hover:bg-S hover:text-P text-center h-11">Book
+            Now</a>
     </div>
 </nav>
 

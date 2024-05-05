@@ -21,7 +21,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/');
+            return redirect()->intended('/profile');
         } else {
             return back()->withErrors(['email' => 'Invalid Email or password']);
         }

@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookNowController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ItemsController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\AppointmentController;
 
 Route::get('/', function () {return view('barber.home');});
 
@@ -18,7 +19,10 @@ Route::post('/login', [UserController::class, 'login']);
 
 Route::get('/profile', [UserController::class, 'viewAppointments']);
 
-
 Route::get('/guest', [AppointmentController::class, 'viewAppointments']);
 
 route::post('/logout', [UserController::class, 'logout'])->name("logout");
+
+Route::get('/store', [ItemsController::class, 'showAllItems']);
+
+Route::get('store/search', [SearchController::class, 'searchItems'])->name("search");
