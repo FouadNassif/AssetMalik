@@ -37,6 +37,7 @@ class FavoriteItemsController extends Controller
         $requestData = $request->json()->all();
         $item_id = $requestData['item_id'];
         $user_id = $requestData['user_id'];
+        
         $deletedItem = FavoriteItems::where('user_id', $user_id)
             ->where('items_id', $item_id)
             ->delete();
