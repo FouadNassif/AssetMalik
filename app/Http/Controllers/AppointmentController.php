@@ -29,6 +29,7 @@ class AppointmentController extends Controller
         if (Auth::check()) {
             $user = Auth::user();
             $appointment = $user->appointments()->create([
+                'user_id' => $user->id,
                 'name' => $request->name,
                 'phoneNumber' => $request->phoneNumber,
                 'date' => $request->date,
@@ -39,7 +40,7 @@ class AppointmentController extends Controller
             ]);
 
             if ($appointment) {
-                return redirect('/')->with('BookNow_success', 'Book Now Success');
+                return redirect('/profile')->with('BookNow_success', 'Book Now Success');
             }
         }
     }

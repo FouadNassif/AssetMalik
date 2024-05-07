@@ -17,7 +17,6 @@ class AdminController extends Controller
 
     public function ShowAllApoi()
     {
-        // Fetch all clients and order them by date and time
         $clients = Appointments::orderBy('date')->orderBy('time')->get();
         
         return view('barber.ClientApoi', ["Clients" => $clients]);

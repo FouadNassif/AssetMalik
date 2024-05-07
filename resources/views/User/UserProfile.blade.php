@@ -78,6 +78,17 @@
                     <p class="text-center p-5 font-bold text-red-600">No appointments found.</p>
                 @endif
             </div>
-        @endauth
-    @endsection
-</div>
+        </div>
+        <div class="flex justify-center">
+            <div class="bg-P border-2 border-S rounded-2xl w-11/12 mt-5">
+                @if (count($favoriteItems) > 0)
+                    @foreach ($favoriteItems as $item)
+                        <x-item-card :item="$item" />
+                    @endforeach
+                @else
+                    <h1 class="text-center text-red-600 text-xl font-bold m-5">No Favorites Items</h1>
+                @endif
+            </div>
+        </div>
+    @endauth
+@endsection

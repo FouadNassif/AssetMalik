@@ -107,7 +107,7 @@
         minDate: "today",
         disable: [
             function(date) {
-                return date.getDay() === 1; // Sunday is represented by 0
+                return date.getDay() === 1;
             }
         ],
         dateFormat: "Y-m-d",

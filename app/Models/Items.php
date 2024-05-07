@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\FavoriteItems;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Items extends Model
 {
@@ -15,4 +16,9 @@ class Items extends Model
         'price',
         'quantity',
     ];
+
+    public function favoriteByUsers()
+    {
+        return $this->hasMany(FavoriteItems::class);
+    }
 }

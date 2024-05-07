@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Items;
+use Illuminate\Http\Request;
+use App\Models\FavoriteItems;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -52,7 +54,6 @@ class UserController extends Controller
             'role' => '1',
         ]);
 
-        // Authenticate the User
         Auth::login($user);
 
         return redirect('/');
@@ -68,9 +69,10 @@ class UserController extends Controller
     {
         if (Auth::check()) {
             $userAppointments = Auth::user()->appointments()->get();
-            return view('user.UserProfile', compact('userAppointments'));
+            $favoriteItemsId = Auth::user()->favoriteItems()->pluck('items_id')->toArray();
+            $favoriteItems = Items::whereIn('id', $favoriteItemsId)->get();
+            return view('user.UserProfile', compact('userAppointments', 'favoriteItems'));
         } else {
-            // Redirect to login if the user is not authenticated
             return redirect('/loginF')->with('error', 'Please log in to view your appointments.');
         }
     }
