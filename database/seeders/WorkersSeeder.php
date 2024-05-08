@@ -17,36 +17,42 @@ class WorkersSeeder extends Seeder
             'name' => "Fouad Nassif",
             'bio' => 'Lorem ipsum dolor sit amet.',
             'experience' => "6+ years",
+            
         ]);
 
         Workers::create([
             'name' => "Joseph Nassif",
             'bio' => 'Lorem ipsum dolor sit amet.',
             'experience' => "6+ years",
+            
         ]);
 
         Workers::create([
             'name' => "Fouad Nassif",
             'bio' => 'Lorem ipsum dolor sit amet.',
             'experience' => "6+ years",
+            
         ]);
 
         Workers::create([
             'name' => "Hannah Saker",
             'bio' => 'Lorem ipsum dolor sit amet.',
             'experience' => "6+ years",
+            
         ]);
 
         Workers::create([
             'name' => "Hammid Tahech",
             'bio' => 'Lorem ipsum dolor sit amet.',
             'experience' => "6+ years",
+            
         ]);
 
         Workers::create([
             'name' => "Adolph Mourani",
             'bio' => 'Lorem ipsum dolor sit amet.',
             'experience' => "6+ years",
+            
         ]);
     }
 }

@@ -7,6 +7,9 @@
         <p class="font-bold text-center mb-3">$<span class="font-medium">{{ $item->price }}</span></p> <br>
     </a>
     <button type="button" value="{{ $item->id }}" onclick="addFavoriteItem(this, {{ auth()->user()->id }})">
-        <img class="w-soc mt-5 h-soc" id="favoriteImg_{{ $item->id }}" src="{{ asset('assets/svg/Favorite.svg') }}">
+        <img class="w-soc mt-5 h-soc" id="favoriteImg_{{ $item->id }}" src="{{ asset('assets/svg/Favorite.svg') }}" 
+        data-favorite="{{ asset('assets/svg/Favorites.svg') }}"
+        data-unfavorite="{{ asset('assets/svg/Favorite.svg') }}">
+
     </button>
 </div>

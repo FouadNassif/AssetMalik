@@ -80,7 +80,7 @@
             </div>
         </div>
         <div class="flex justify-center">
-            <div class="bg-P border-2 border-S rounded-2xl w-11/12 mt-5">
+            <div class="bg-P border-2 border-S rounded-2xl w-11/12 mt-5 flex flex-wrap">
                 @if (count($favoriteItems) > 0)
                     @foreach ($favoriteItems as $item)
                         <x-item-card :item="$item" />

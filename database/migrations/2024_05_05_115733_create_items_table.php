@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->string('logo')->nullable();
+            $table->unsignedTinyInteger('rating');
+            $table->integer('category_id');
             $table->decimal('price', 8, 2);
             $table->integer('quantity')->default(0);
             $table->timestamps();

@@ -21,7 +21,7 @@ class ItemsController extends Controller
 
     public function showSingleItem(Items $id)
     {
-        $item = Items::find($id);
+        $item = Items::find($id->getAttribute('id'));
         if ($item) {
             return view('store.signleItem', compact('item'));
         }

@@ -1,5 +1,3 @@
-<!-- resources/views/home.blade.php -->
-
 @extends('components.layout')
 
 @section('title', 'Store')
@@ -16,9 +14,6 @@
             document.getElementById(`favoriteImg_{{ $itemId }}`).src = "{{ asset('assets/svg/Favorites.svg') }}";
         </script>
     @endforeach
-
-
-
 
     <form action="" method="post">
         <div class="bg-P text-white w-3/4 rounded-2xl fixed top-1/2 left-1/2 transform hidden -translate-x-1/2 -translate-y-1/2 h-auto p-7"
@@ -48,131 +43,3 @@
         </div>
     </form>
 @endsection
-
-<script>
-    // function showDesItem(id) {
-    //     document.getElementById('itemDes').style.display = 'block';
-    //     const quantityInput = document.getElementById('quantity').value = 0;
-
-    //     const url = '/api/getItem';
-    //     fetch(url, {
-    //             method: 'POST',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Accept': 'application/json',
-    //                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
-    //                     'content')
-    //             },
-    //             body: JSON.stringify({
-    //                 item_id: id,
-    //             })
-    //         })
-    //         .then(response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return response.json();
-
-    //         })
-    //         .then(data => {
-    //             let itemData = [];
-    //             for (let i of data.item) {
-    //                 itemData.push(i);
-    //             }
-    //             let item = itemData[0]
-    //             document.getElementById("item_name").textContent = item.name
-    //             document.getElementById("item_des").textContent = item.description
-    //             document.getElementById("item_price").textContent = item.price
-    //             document.getElementById("item_quan").textContent = item.quantity
-    //             document.getElementById("favBut").value = item.id
-    //             document.getElementById('favoriteImg').alt = item.id
-    //         })
-    //         .catch(error => {
-    //             console.error('There was a problem with the fetch operation:', error);
-    //         });
-    // }
-    function postData(url, requestData) {
-        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        return fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': token
-                },
-                body: JSON.stringify(requestData)
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .catch(error => {
-                console.error('There was a problem with the fetch operation:', error);
-            });
-    }
-
-    function addFavoriteItem(item_id, user_id) {
-        let SVGICON = item_id.querySelector("img");
-        if (SVGICON.src.includes("Favorites")) {
-            deleteFavoriteItem(item_id, user_id);
-            return
-        }
-        let ButtonValue = item_id.value;
-        const url = '/api/addFavoriteItem';
-        const requestData = {
-            item_id: ButtonValue,
-            user_id: user_id
-        };
-
-        postData(url, requestData)
-            .then(data => {
-                if (data.success) {
-                    let img = document.querySelector(`#favoriteImg_${ButtonValue}`);
-                    if (img) {
-                        img.src = "{{ asset('assets/svg/Favorites.svg') }}";
-                    }
-                }
-            });
-    }
-
-    function deleteFavoriteItem(item_id, user_id) {
-        let ButtonValue = item_id.value;
-        const url = '/api/deleteFavoriteItem';
-        const requestData = {
-            item_id: ButtonValue,
-            user_id: user_id
-        };
-
-        postData(url, requestData)
-            .then(data => {
-                if (data.success == "true") {
-                    let img = item_id.querySelector("img");
-                    img.src = "{{ asset('assets/svg/Favorite.svg') }}"
-                }
-            });
-    }
-
-    function closeItemDes() {
-        document.getElementById('itemDes').style.display = 'none'
-    }
-
-
-    function increment() {
-        const quantityInput = document.getElementById('quantity');
-        const quantityValue = document.getElementById("item_quan");
-        if (parseInt(quantityValue.textContent) > quantityInput.value) {
-            console.log(quantityValue.textContent, quantityInput.value)
-            quantityInput.value = parseInt(quantityInput.value) + 1;
-        }
-    }
-
-    function decrement() {
-        const quantityInput = document.getElementById('quantity');
-        var currentQuantity = parseInt(quantityInput.value);
-        if (currentQuantity > 0) {
-            quantityInput.value = currentQuantity - 1;
-        }
-    }
-</script>

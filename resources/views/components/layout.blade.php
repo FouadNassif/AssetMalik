@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Hammersmith+One" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="{{ asset('js/BookNow.js') }}"></script>
+    <script src="{{ asset('assets/js/Store.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/booknow.css') }}">
     </script>
 </head>
