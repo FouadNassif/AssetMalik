@@ -1,4 +1,4 @@
-@props(['item'])
+@props(['item', 'itemReviews'])
 <form action="/addToCart" method="post">
     @csrf
     <div class="flex p-7">
@@ -28,16 +28,31 @@
                 <p class="text-xl">{{ $item->raiting }} stars</p>
             </div>
             <div class="flex justify-between">
-                <input name="price" type="text" hidden value="{{$item->price}}">
-                <input name="item_id" type="text" hidden value="{{$item->id}}">
+                <input name="price" type="text" hidden value="{{ $item->price }}">
+                <input name="item_id" type="text" hidden value="{{ $item->id }}">
                 @auth
-                <input name="user_id" type="text" hidden value="{{auth()->user()->id}}">
+                    <input name="user_id" type="text" hidden value="{{ auth()->user()->id }}">
                 @endauth
                 <button type="submit" class="bg-S text-P p-3 font-bold mt-5 rounded-3xl">Add to Cart</button>
             </div>
         </div>
     </div>
 </form>
+<div class="bg-P w-10/12 rounded-xl p-5">
+    <div class="flex">
+        <form action="/addReview" method="POST">
+            @csrf
+            <input type="text" name="review" class="w-full outline-none p-2 font-bold">
+            <input name="item_id" type="text" hidden value="{{ $item->id }}">
+            <button class="w-fit bg-S font-bold text-P" type="submit"> Add Review</button>
+        </form>
+    </div>
+    <div class="flex flex-wrap">
+        @foreach ($itemReviews as $review)
+            <x-review :userName="$review->user->name" :review="$review->review" :date="$review->created_at"/>
+        @endforeach
+    </div>
+</div>
 
 <script>
     const quantityInput = document.getElementById('quantity');

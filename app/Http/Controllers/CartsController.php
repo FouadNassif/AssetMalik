@@ -32,4 +32,11 @@ class CartsController extends Controller
             return redirect('/')->with('error', 'Failed to add to cart');
         }
     }
+    public function showCart(){
+        if(Auth::check()){
+            
+            $cart = Auth::user()->cart()->get();
+        }
+        return view('user.cart', compact('cart'));
+    }
 }

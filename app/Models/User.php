@@ -42,4 +42,9 @@ class User extends Authenticatable implements AuthenticatableContract
     {
         return $this->belongsToMany(Carts::class, 'carts_user', 'user_id', 'cart_id');
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Reviews::class);
+    }
 }

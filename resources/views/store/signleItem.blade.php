@@ -3,5 +3,5 @@
 @section('title', 'Store')
 
 @section('content')
-        <x-signle-item :item="$item" />
+        <x-signle-item :itemReviews="$itemReviews" :item="$item"/>
 @endsection

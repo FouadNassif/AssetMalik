@@ -72,16 +72,9 @@ class UserController extends Controller
             $userAppointments = Auth::user()->appointments()->get();
             $favoriteItemsId = Auth::user()->favoriteItems()->pluck('items_id')->toArray();
             $favoriteItems = Items::whereIn('id', $favoriteItemsId)->get();
-            return view('user.UserProfile', compact('userAppointments', 'favoriteItems'));
+            return view('user.UserProfile', compact('userAppointments', 'favoriteItemsId', 'favoriteItems'));
         } else {
             return redirect('/loginF')->with('error', 'Please log in to view your appointments.');
         }
-    }
-
-    public function showCart(){
-        if(Auth::check()){
-            $cart = Auth::user()->cart()->get();
-        }
-        return view('user.cart', compact('cart'));
     }
 }

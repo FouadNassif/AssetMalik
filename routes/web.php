@@ -6,6 +6,7 @@ use App\Http\Controllers\CartsController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ReviewsController;
 
 Route::get('/', function () {return view('barber.home');});
 
@@ -35,6 +36,7 @@ Route::get('store/search', [SearchController::class, 'searchItems'])->name("sear
 
 // Show Cart
 Route::get('/cart', [UserController::class, 'showCart']);
+Route::post('/addReview', [ReviewsController::class, 'addReview']);
 Route::post('/addToCart', [CartsController::class, 'addToCart']);
 // Show Signle Item
 Route::get('/store/{id}', [ItemsController::class, 'showSingleItem']);

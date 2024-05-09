@@ -28,12 +28,7 @@
                     <p class="font-bold">Price: <span class="font-normal" id="item_price"></span></p><br>
                     <p class="font-bold">Quantity: <span class="font-normal" id="item_quan"></span></p>
                     <div class="flex mt-5">
-                        <button type="button" onclick="decrement()"><img src="{{ asset('assets/svg/Minus.svg') }}"
-                                alt="" class="w-30p h-30p"></button>
-                        <input type="text" name="quantity" value="0" id="quantity"
-                            class="h-30p w-soc mx-1 outline-none text-center text-black font-bold">
-                        <button type="button" onclick="increment()"><img src="{{ asset('assets/svg/Plus.svg') }}"
-                                alt="" class="w-30p h-30p"></button>
+                        @include('partials._quantity')
                     </div>
                     <div class="flex justify-between">
                         <button type="submit" class="bg-S text-P p-3 font-bold mt-5 rounded-3xl">Add to Cart</button>
