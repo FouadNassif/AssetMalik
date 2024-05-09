@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class User extends Authenticatable implements AuthenticatableContract
 {
@@ -35,5 +36,10 @@ class User extends Authenticatable implements AuthenticatableContract
     public function favoriteItems()
     {
         return $this->hasMany(FavoriteItems::class);
+    }
+
+    public function cart(): BelongsToMany
+    {
+        return $this->belongsToMany(Carts::class, 'carts_user', 'user_id', 'cart_id');
     }
 }

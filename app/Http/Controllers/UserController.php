@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Items;
 use Illuminate\Http\Request;
@@ -75,5 +76,12 @@ class UserController extends Controller
         } else {
             return redirect('/loginF')->with('error', 'Please log in to view your appointments.');
         }
+    }
+
+    public function showCart(){
+        if(Auth::check()){
+            $cart = Auth::user()->cart()->get();
+        }
+        return view('user.cart', compact('cart'));
     }
 }

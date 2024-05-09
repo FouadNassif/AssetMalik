@@ -26,4 +26,8 @@ class ItemsController extends Controller
             return view('store.signleItem', compact('item'));
         }
     }
+
+    public function addToCart(Request $request){
+        
+    }
 }

@@ -170,6 +170,7 @@
         let buttons = document.querySelectorAll("#timeInputcon a");
         for (but of buttons) {
             but.style.backgroundColor = "transparent";
+            but.style.color = '#F5D57E'
         }
         button.style.backgroundColor = "#F5D57E";
         button.style.color = "#0D484F";

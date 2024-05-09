@@ -21,7 +21,6 @@ class SearchController extends Controller
             array_push($data, $itemData);
         }
 
-
         return view('store.searched', compact('data'));
     }
 }

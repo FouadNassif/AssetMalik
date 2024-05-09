@@ -19,7 +19,7 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '99',
             'quantity' => '99',
-            'rating' => 5,
+            'raiting' => 5,
             'category_id' => 4
         ]);
 
@@ -32,7 +32,7 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '99',
             'quantity' => '99',
-            'rating' => 5,
+            'raiting' => 5,
             'category_id' => 4
         ]);
 
@@ -45,7 +45,7 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '99',
             'quantity' => '99',
-            'rating' => 5,
+            'raiting' => 5,
             'category_id' => 4
         ]);
 
@@ -58,7 +58,7 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '99',
             'quantity' => '99',
-            'rating' => 5,
+            'raiting' => 5,
             'category_id' => 4
         ]);
 
@@ -71,7 +71,7 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '99',
             'quantity' => '99',
-            'rating' => 5,
+            'raiting' => 5,
             'category_id' => 4
         ]);
 
@@ -84,7 +84,7 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '99',
             'quantity' => '99',
-            'rating' => 5,
+            'raiting' => 5,
             'category_id' => 4
         ]);
     }

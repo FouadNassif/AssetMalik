@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('logo')->nullable();
-            $table->unsignedTinyInteger('rating');
+            $table->unsignedTinyInteger('raiting');
             $table->integer('category_id');
             $table->decimal('price', 8, 2);
             $table->integer('quantity')->default(0);
