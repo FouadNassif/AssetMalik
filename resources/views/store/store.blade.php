@@ -3,17 +3,34 @@
 @section('title', 'Store')
 
 @section('content')
-    @include('partials._search')
-    <div class="flex flex-wrap p-5">
-        @foreach ($items as $item)
-            <x-item-card :item="$item" />
-        @endforeach
+    <div class="flex justify-center mt-5">
+        <div class="flex justify-center w-11/12">
+            <div class="w-full p-5 border-r-4 h-full">
+                <div class="flex justify-center">@include('partials._search')</div>
+                <ul class="text-white text-lg font-medium p-5">
+                    <label for="">Men</label>
+                    <li><input type="radio"> Razors</li>
+                    <li><input type="radio"> Gell</li>
+                    <li><input type="radio"> Shampoo</li>
+                    <li><input type="radio"> Comb</li>
+                    <li><input type="radio"> e2dd</li>
+                    <li><input type="radio"> e2dd</li>
+                    <li><input type="radio"> e2dd</li>
+                </ul>
+                <input type="range">
+            </div>
+            <div class="flex flex-wrap p-5">
+                @foreach ($items as $item)
+                    <x-item-card :item="$item" />
+                @endforeach
+            </div>
+            @foreach ($favoriteItemsId as $itemId)
+                <script>
+                    document.getElementById(`favoriteImg_{{ $itemId }}`).src = "{{ asset('assets/svg/Favorites.svg') }}";
+                </script>
+            @endforeach
+        </div>
     </div>
-    @foreach ($favoriteItemsId as $itemId)
-        <script>
-            document.getElementById(`favoriteImg_{{ $itemId }}`).src = "{{ asset('assets/svg/Favorites.svg') }}";
-        </script>
-    @endforeach
 
     <form action="" method="post">
         <div class="bg-P text-white w-3/4 rounded-2xl fixed top-1/2 left-1/2 transform hidden -translate-x-1/2 -translate-y-1/2 h-auto p-7"
@@ -37,4 +54,5 @@
             </div>
         </div>
     </form>
+
 @endsection

@@ -1,15 +1,20 @@
 @props(['item', 'itemReviews'])
 <form action="/addToCart" method="post">
     @csrf
-    <div class="flex p-7">
-        <div class="w-3/4">
-            <img src="{{ asset('assets/img/Razor2.png') }}" alt="">
+    <div class="flex w-19/12">
+        <div class="w-2/4 flex justify-center mt-10">
+            <img class="w-7/12" src="{{ asset('assets/img/Razor2.png') }}" alt="">
         </div>
-        <div class="text-white ml-10">
-            <h1 class="font-bold text-2xl">{{ $item->name }}</h1><br>
-            <h2 class="text-white-500">{{ $item->description }}</h2><br>
-            <p>Category: {{ $item->category }}</p><br>
-            <p>Price: {{ $item->price }}</span></p><br>
+        <div class="text-white mt-10">
+
+            <div class="font-bold text-gray-500">
+                <a href="/store" class="hover:text-gray-400">Online Store</a> / <a href=""
+                    class="hover:text-gray-400">{{ $item->id }}</a>
+            </div> <br>
+
+            <h1 class="font-bold text-3xl">{{ $item->name }}</h1><br>
+            <p class="text-F font-medium">Machines</p><br>
+            <p class="text-2xl font-bold">$ {{ $item->price }}</span></p><br>
             <p>Quantity: <span id="item_quan">{{ $item->quantity }}</span></p>
             <div class="flex mt-5">
                 <button type="button" onclick="decrement()"><img src="{{ asset('assets/svg/Minus.svg') }}"
@@ -38,19 +43,29 @@
         </div>
     </div>
 </form>
-<div class="bg-P w-10/12 rounded-xl p-5">
-    <div class="flex">
-        <form action="/addReview" method="POST">
-            @csrf
-            <input type="text" name="review" class="w-full outline-none p-2 font-bold">
-            <input name="item_id" type="text" hidden value="{{ $item->id }}">
-            <button class="w-fit bg-S font-bold text-P" type="submit"> Add Review</button>
-        </form>
+<div class="flex justify-center mt-10">
+    <div class="w-10/12">
+        <h2 class="text-lg mb-1 text-S font-bold border-t-4 border-S w-fit p-1">Description</h2>
+        <hr>
+        <h2 class="text-slate-300 p-3">{{ $item->description }}</h2><br>
     </div>
-    <div class="flex flex-wrap">
-        @foreach ($itemReviews as $review)
-            <x-review :userName="$review->user->name" :review="$review->review" :date="$review->created_at"/>
-        @endforeach
+</div>
+<div class="flex justify-center">
+    <div class=" border-2 border-S w-11/12 rounded-xl p-7">
+        <div class="flex">
+            <form action="/addReview" method="POST" class="flex w-full">
+                @csrf
+                <input type="text" name="review" class="w-full outline-none p-2 font-bold bg-F text-slate-200"
+                    placeholder="Add a Review...">
+                <input name="item_id" type="text" hidden value="{{ $item->id }}">
+                <button class="w-1/12 bg-S font-bold text-P " type="submit"> Add Review</button>
+            </form>
+        </div>
+        <div class="flex flex-wrap justify-center mt-5">
+            @foreach ($itemReviews as $review)
+                <x-review :user="$review->user" :review="$review->review" :date="$review->created_at" :reviewId="$review->id" :reviewLikes="$review->likes" />
+            @endforeach
+        </div>
     </div>
 </div>
 
@@ -69,5 +84,35 @@
         if (currentQuantity > 1) {
             quantityInput.value = currentQuantity - 1;
         }
+    }
+
+    function likeReview(review_id) {
+        let img = document.getElementById("likeSVG");
+        if (img.src.includes('Upvoted')) {
+            console.log("W")
+            const url = '/api/removeLike';
+            const requestData = {
+                review_id: review_id,
+            };
+            postData(url, requestData)
+                .then(data => {
+                    if (data.success == "true") {
+                        document.getElementById("reviewLikes").textContent = data.likes
+                        img.src = img.getAttribute('data-unlike');
+                    }
+                });
+            return
+        }
+        const url = '/api/likeReview';
+        const requestData = {
+            review_id: review_id,
+        };
+        postData(url, requestData)
+            .then(data => {
+                if (data.success == "true") {
+                    document.getElementById("reviewLikes").textContent = data.likes
+                    img.src = img.getAttribute('data-like');
+                }
+            });
     }
 </script>

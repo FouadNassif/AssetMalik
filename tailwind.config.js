@@ -23,6 +23,7 @@ export default {
         'soc': '40px',
         '200p': '200px',
         '30p': '30px',
+        '95': '95%',
       },
       height: {
         'BrCard': '400px',

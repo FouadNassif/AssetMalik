@@ -1,12 +1,14 @@
 @props(['item'])
+<div class="bg-transparent p-2 m-5 text-white w-1/4">
+    <a href="/store/{{ $item->id }}" class="flex flex-col items-center">
 
-<div class="bg-transparent border border-S w-80 p-2 m-3 text-left rounded-2xl text-White flex flex-col">
-    <a href="/store/{{ $item->id }}">
-        <img src="{{ asset('assets/img/Razor2.png') }}" alt="" class="w-fit h-200p rounded-t-2xl ml-12"><br>
-        <h2 class="font-medium text-xl text-center">{{ $item->name }}</h2><br>
-        <p class="font-bold text-center mb-3">$<span class="font-medium">{{ $item->price }}</span></p> <br>
+        <img src="{{ asset('assets/img/Razor2.png') }}" alt="" class="w-fit h-200p mb-2">
+        <div>
+            <h2 class="font-medium text-xl text-center">{{ $item->name }}</h2>
+            <p class="text-center mt-3">${{ $item->price }}</p>
+        </div>
     </a>
-    <div class="flex justify-between px-1">
+    <div class="flex px-1 justify-between">
         <button type="button" value="{{ $item->id }}" onclick="addFavoriteItem(this, {{ auth()->user()->id }})">
             <img class="w-8" id="favoriteImg_{{ $item->id }}" src="{{ asset('assets/svg/Favorite.svg') }}"
                 data-favorite="{{ asset('assets/svg/Favorites.svg') }}"
@@ -18,6 +20,7 @@
         </button>
     </div>
 </div>
+
 
 <script>
     async function shareButton(f) {

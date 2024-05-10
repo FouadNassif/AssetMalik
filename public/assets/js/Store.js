@@ -61,7 +61,7 @@ function deleteFavoriteItem(item_id, user_id) {
         });
 }
 
-function addToCart(item_id, user_id, quantity, price){
+function addToCart(item_id, user_id, quantity, price) {
     console.log(item_id, user_id, price, quantity)
     let ButtonValue = item_id.value;
     const url = '/api/deleteFavoriteItem';
@@ -82,6 +82,19 @@ function closeItemDes() {
     document.getElementById('itemDes').style.display = 'none'
 }
 
+function likeReview(id) {
+    
+    const url = '/api/likeReview';
+    const requestData = {
+        review_id: id,
+    };
+    postData(url, requestData)
+        .then(data => {
+            if (data.success == "true") {
+                document.getElementById("reviewLikes").textContent = data.likes
+            }
+        });
+}
 
 
 

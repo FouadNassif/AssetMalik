@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Items;
+use App\Models\Reviews;
 use Illuminate\Http\Request;
 use App\Models\FavoriteItems;
 use Illuminate\Support\Facades\Auth;
@@ -72,7 +73,16 @@ class UserController extends Controller
             $userAppointments = Auth::user()->appointments()->get();
             $favoriteItemsId = Auth::user()->favoriteItems()->pluck('items_id')->toArray();
             $favoriteItems = Items::whereIn('id', $favoriteItemsId)->get();
-            return view('user.UserProfile', compact('userAppointments', 'favoriteItemsId', 'favoriteItems'));
+            $itemReviews = Reviews::where('user_id', Auth::user()->id)->get();
+            return view(
+                'user.UserProfile',
+                compact(
+                    'userAppointments',
+                    'favoriteItemsId',
+                    'favoriteItems',
+                    'itemReviews'
+                )
+            );
         } else {
             return redirect('/loginF')->with('error', 'Please log in to view your appointments.');
         }
