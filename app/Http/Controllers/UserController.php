@@ -87,4 +87,15 @@ class UserController extends Controller
             return redirect('/loginF')->with('error', 'Please log in to view your appointments.');
         }
     }
+
+    public function showCart()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+            $allCart = $user->cart()->get();
+            $itemId = $allCart->pluck('item_id');
+            $items = Items::find($itemId);
+        }
+        return view('user.cart', compact('items', 'allCart'));
+    }
 }

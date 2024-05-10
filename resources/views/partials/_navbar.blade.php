@@ -26,7 +26,11 @@ sticky">
 
     </ul>
     <a class="mr-64" href="/" id="logo"><img src="{{ asset('assets/svg/Logo.svg') }}" alt=""></a>
-    <div class="flex my-2">
+    <div class="flex my-2 justify-center align-center text-center">
+        @auth
+            <p class="bg-S text-white  font-bold rounded-full w-4 h-8 text-lg text-center">{{ Auth::user()->cart()->count() }}</p>
+        @endauth
+        <a href="/cart"><img src="{{ asset('/assets/svg/Cart.svg') }}" class="w-soc" alt=""></a>
         <a href="/profile"><img src="{{ asset('assets/svg/Profile.svg') }}" alt=""></a>
         <a href="/BookNow" class="mx-5 border-4 border-S px-4 py-1 hover:bg-S hover:text-P text-center h-11">Book
             Now</a>

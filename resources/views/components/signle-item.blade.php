@@ -1,4 +1,4 @@
-@props(['item', 'itemReviews'])
+@props(['item', 'itemReviews', 'user'])
 <form action="/addToCart" method="post">
     @csrf
     <div class="flex w-19/12">
@@ -45,23 +45,41 @@
 </form>
 <div class="flex justify-center mt-10">
     <div class="w-10/12">
-        <h2 class="text-lg mb-1 text-S font-bold border-t-4 border-S w-fit p-1">Description</h2>
+        <div class="flex">
+            <button class="mr-3" onclick="showItemDescription()">
+                <h2 class="text-lg text-S font-bold border-t-4 border-S w-fit p-1">Description</h2>
+            </button>
+            <button class="mr-3" onclick="showItemReviews()">
+                <h2 class="text-lg text-S font-bold border-t-4 border-S w-fit p-1">Reviews</h2>
+            </button>
+        </div>
         <hr>
-        <h2 class="text-slate-300 p-3">{{ $item->description }}</h2><br>
+        <div id="itemData">
+            <h2 class="text-slate-300 p-3">{{ $item->description }}</h2><br>
+        </div>
     </div>
 </div>
 <div class="flex justify-center">
-    <div class=" border-2 border-S w-11/12 rounded-xl p-7">
-        <div class="flex">
-            <form action="/addReview" method="POST" class="flex w-full">
-                @csrf
-                <input type="text" name="review" class="w-full outline-none p-2 font-bold bg-F text-slate-200"
-                    placeholder="Add a Review...">
-                <input name="item_id" type="text" hidden value="{{ $item->id }}">
-                <button class="w-1/12 bg-S font-bold text-P " type="submit"> Add Review</button>
-            </form>
-        </div>
+    <div class=" w-10/12 p-7 hidden" id="reviewsSection">
         <div class="flex flex-wrap justify-center mt-5">
+            <div class="bg-white p-2 rounded-2xl w-5/12 h-30">
+                @auth
+                    <div class="flex justify-between">
+                        <p class="font-bold">{{ Auth::user()->name }}</p>
+                        <p>2024-05-10 12:58:38</p>
+                    </div>
+                    <div class="ml-4">
+                        <form action="/addReview" method="POST" class="w-full">
+                            @csrf
+                            <textarea type="text" name="review" class="w-full h-24 outline-none p-2 font-bold text-slate-900"
+                                placeholder="Add a Review..."></textarea>
+                            <input name="item_id" type="text" hidden value="{{ $item->id }}">
+                            <button class="w-4/12 h-8 bg-S font-bold text-P " type="submit"> Add Review</button>
+                        </form>
+                    </div>
+                @endauth
+
+            </div>
             @foreach ($itemReviews as $review)
                 <x-review :user="$review->user" :review="$review->review" :date="$review->created_at" :reviewId="$review->id" :reviewLikes="$review->likes" />
             @endforeach
@@ -115,4 +133,22 @@
                 }
             });
     }
+
+    let itemData = document.getElementById("itemData");
+    let reviewsSection = document.getElementById("reviewsSection");
+
+    function showItemDescription() {
+        itemData.style.display = "block";
+        reviewsSection.style.display = "none";
+    }
+
+    function showItemReviews() {
+        itemData.style.display = "none";
+        reviewsSection.style.display = "block";
+    }
 </script>
+
+{{-- 
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus, id? Illum dolorum doloremque eos
+                    corporis odit temporibus suscipit! Alias quidem doloribus dolore ducimus illo quam exercitationem maxime
+                    rerum laudantium ipsa. Quaerat sunt veritatis molestiae pariatur eaque harum odit fugit reiciendis. --}}

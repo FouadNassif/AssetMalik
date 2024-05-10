@@ -6,6 +6,7 @@ use App\Http\Controllers\CartsController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\FilterController;
 use App\Http\Controllers\ReviewsController;
 
 Route::get('/', function () {return view('barber.home');});
@@ -33,6 +34,7 @@ Route::get('/store', [ItemsController::class, 'showAllItems']);
 
 // Search a item
 Route::get('store/search', [SearchController::class, 'searchItems'])->name("search");
+Route::get('store/filter', [FilterController::class, 'filterItems'])->name("filter");
 
 // Show Cart
 Route::get('/cart', [UserController::class, 'showCart']);

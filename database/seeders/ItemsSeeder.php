@@ -17,7 +17,7 @@ class ItemsSeeder extends Seeder
                             facere exercitationem inventore dolor architecto? Enim ullam officia laudantium 
                             quia, modi, laboriosam voluptate iure explicabo saepe vel illum aut, voluptatem 
                             necessitatibus similique?',
-            'price' => '99',
+            'price' => '1',
             'quantity' => '99',
             'raiting' => 5,
             'category_id' => 4
@@ -30,7 +30,7 @@ class ItemsSeeder extends Seeder
                             facere exercitationem inventore dolor architecto? Enim ullam officia laudantium 
                             quia, modi, laboriosam voluptate iure explicabo saepe vel illum aut, voluptatem 
                             necessitatibus similique?',
-            'price' => '99',
+            'price' => '11',
             'quantity' => '99',
             'raiting' => 5,
             'category_id' => 4
@@ -43,8 +43,8 @@ class ItemsSeeder extends Seeder
                             facere exercitationem inventore dolor architecto? Enim ullam officia laudantium 
                             quia, modi, laboriosam voluptate iure explicabo saepe vel illum aut, voluptatem 
                             necessitatibus similique?',
-            'price' => '99',
-            'quantity' => '99',
+            'price' => '25435',
+            'quantity' => '343',
             'raiting' => 5,
             'category_id' => 4
         ]);
@@ -56,8 +56,8 @@ class ItemsSeeder extends Seeder
                             facere exercitationem inventore dolor architecto? Enim ullam officia laudantium 
                             quia, modi, laboriosam voluptate iure explicabo saepe vel illum aut, voluptatem 
                             necessitatibus similique?',
-            'price' => '99',
-            'quantity' => '99',
+            'price' => '9349',
+            'quantity' => '12',
             'raiting' => 5,
             'category_id' => 4
         ]);
@@ -69,8 +69,8 @@ class ItemsSeeder extends Seeder
                             facere exercitationem inventore dolor architecto? Enim ullam officia laudantium 
                             quia, modi, laboriosam voluptate iure explicabo saepe vel illum aut, voluptatem 
                             necessitatibus similique?',
-            'price' => '99',
-            'quantity' => '99',
+            'price' => '23',
+            'quantity' => '4325',
             'raiting' => 5,
             'category_id' => 4
         ]);
@@ -82,8 +82,8 @@ class ItemsSeeder extends Seeder
                             facere exercitationem inventore dolor architecto? Enim ullam officia laudantium 
                             quia, modi, laboriosam voluptate iure explicabo saepe vel illum aut, voluptatem 
                             necessitatibus similique?',
-            'price' => '99',
-            'quantity' => '99',
+            'price' => '34',
+            'quantity' => '234',
             'raiting' => 5,
             'category_id' => 4
         ]);
@@ -113,7 +113,7 @@ class ItemsSeeder extends Seeder
             <li>Vendu avec: 1 câble d’alimentation, 1 burette d’huile, 1 brosse, 1 socle chargeur et 1 mini-tournevis.</li>
             </ul>
             ',
-            'price' => '99',
+            'price' => '21',
             'quantity' => '99',
             'raiting' => 5,
             'category_id' => 4

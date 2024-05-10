@@ -15,6 +15,7 @@ export default {
         'Dark': '#0E0E0E',
         'HS': '#ecc760',
         'F': '#086F7B',
+        'Reviews': '#1f1f1f',
       },
       width: {
         'BrCard': '400px',
