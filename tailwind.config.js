@@ -16,6 +16,7 @@ export default {
         'HS': '#ecc760',
         'F': '#086F7B',
         'Reviews': '#1f1f1f',
+        'Dark1': '#212121',
       },
       width: {
         'BrCard': '400px',
@@ -23,8 +24,11 @@ export default {
         'LImg': '525px',
         'soc': '40px',
         '200p': '200px',
+        '100p': '100px',
         '30p': '30px',
+        '20p': '20px',
         '95': '95%',
+        'Rev': '625px',
       },
       height: {
         'BrCard': '400px',
@@ -33,6 +37,7 @@ export default {
         'soc': '40px',
         '200p': '200px',
         '30p': '30px',
+        'Rev': '240px',
       },
       fontFamily: {
         'Def': 'Hammersmith One',

@@ -1,5 +1,5 @@
 @props(['item'])
-<div class="bg-transparent p-2 m-5 text-white w-1/4">
+<div class="bg-transparent p-2 m-5 text-white w-3/12">
     <a href="/store/{{ $item->id }}" class="flex flex-col items-center">
 
         <img src="{{ asset('assets/img/Razor2.png') }}" alt="" class="w-fit h-200p mb-2">

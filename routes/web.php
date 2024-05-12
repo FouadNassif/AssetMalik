@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartsController;
@@ -40,5 +41,7 @@ Route::get('store/filter', [FilterController::class, 'filterItems'])->name("filt
 Route::get('/cart', [UserController::class, 'showCart']);
 Route::post('/addReview', [ReviewsController::class, 'addReview']);
 Route::post('/addToCart', [CartsController::class, 'addToCart']);
+
+Route::get('/admin/appointments', [AdminController::class, 'mainPage']);
 // Show Signle Item
 Route::get('/store/{id}', [ItemsController::class, 'showSingleItem']);

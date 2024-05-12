@@ -16,8 +16,10 @@ class ItemsController extends Controller
             $user = Auth::user();
             $userid = $user->id;
             $favoriteItemsId = Auth::user()->favoriteItems()->pluck('items_id')->toArray();
+            return view('store.store', compact('items', 'favoriteItemsId'));
+        } else {
+            return view('user.login');
         }
-        return view('store.store', compact('items', 'favoriteItemsId'));
     }
 
     public function showSingleItem(Items $id)

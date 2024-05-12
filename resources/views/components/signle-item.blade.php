@@ -47,10 +47,10 @@
     <div class="w-10/12">
         <div class="flex">
             <button class="mr-3" onclick="showItemDescription()">
-                <h2 class="text-lg text-S font-bold border-t-4 border-S w-fit p-1">Description</h2>
+                <h2 class="text-lg text-S font-bold border-t-4 border-S w-fit p-1" id="desBut">Description</h2>
             </button>
             <button class="mr-3" onclick="showItemReviews()">
-                <h2 class="text-lg text-S font-bold border-t-4 border-S w-fit p-1">Reviews</h2>
+                <h2 class="text-lg text-S font-bold border-t-4 border-S w-fit p-1" id="revBut">Reviews</h2>
             </button>
         </div>
         <hr>
@@ -60,19 +60,26 @@
     </div>
 </div>
 <div class="flex justify-center">
-    <div class=" w-10/12 p-7 hidden" id="reviewsSection">
-        <div class="flex flex-wrap justify-center mt-5">
-            <div class="bg-white p-2 rounded-2xl w-5/12 h-30">
+    <div class=" w-full p-7 hidden" id="reviewsSection">
+        <div class="flex flex-wrap justify-center">
+            <div class="bg-white w-Rev h-200p p-2 m-2 min-h-Rev max-h-Rev rounded-xl">
                 @auth
                     <div class="flex justify-between">
                         <p class="font-bold">{{ Auth::user()->name }}</p>
                         <p>2024-05-10 12:58:38</p>
                     </div>
-                    <div class="ml-4">
+                    <div class="flex">
+                        <img class="w-20p" src="{{ asset('assets/svg/Favorites.svg') }}" alt="">
+                        <img class="w-20p" src="{{ asset('assets/svg/Favorites.svg') }}" alt="">
+                        <img class="w-20p" src="{{ asset('assets/svg/Favorites.svg') }}" alt="">
+                        <img class="w-20p" src="{{ asset('assets/svg/Favorites.svg') }}" alt="">
+                        <img class="w-20p" src="{{ asset('assets/svg/Favorites.svg') }}" alt="">
+                    </div>
+                    <div>
                         <form action="/addReview" method="POST" class="w-full">
                             @csrf
-                            <textarea type="text" name="review" class="w-full h-24 outline-none p-2 font-bold text-slate-900"
-                                placeholder="Add a Review..."></textarea>
+                            <textarea type="text" name="review"
+                                class="w-full h-24 outline-none p-2 font-bold text-slate-900 border-black border-2" placeholder="Add a Review..."></textarea>
                             <input name="item_id" type="text" hidden value="{{ $item->id }}">
                             <button class="w-4/12 h-8 bg-S font-bold text-P " type="submit"> Add Review</button>
                         </form>
@@ -136,6 +143,8 @@
 
     let itemData = document.getElementById("itemData");
     let reviewsSection = document.getElementById("reviewsSection");
+    let desBut = document.getElementById('desBut');
+    let revBut = document.getElementById('revBut');
 
     function showItemDescription() {
         itemData.style.display = "block";

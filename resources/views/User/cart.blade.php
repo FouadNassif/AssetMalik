@@ -4,40 +4,35 @@
 
 @section('content')
     @auth
-        <x-userCartId />
-        <div>
-            <div class="w-full flex justify-center">
-                <div class="bg-P px-3">
-                    @foreach ($allCart as $cart)
-                        <div class="bg-PHover flex justify-between p-6 my-3">
-                            <div class="mx-5">
-                                <img src="{{ asset('/assets/img/G1.jpeg') }}" class="w-200p h-1/12 rounded-xl" alt="">
-                            </div>
-                            <div class=" mx-5 flex flex-col justify-center w-max-54p">
-                                <h1>{{ $items->where('id', $cart->item_id)->first()->name }}</h1>
-                            </div>
-                            <div class=" mx-5 flex flex-col justify-center">
-                                <div class="flex">
-                                    <button type="button" onclick="decrement()"><img
-                                            src="{{ asset('assets/svg/Minus.svg') }}"class="w-30p h-30p"></button>
-                                    <input type="text" name="quantity" value="{{ $cart->quantity }}" id="quantity"
-                                        class="h-30p w-soc mx-1 outline-none text-center text-black font-bold">
-                                    <button type="button" onclick="increment()"><img src="{{ asset('assets/svg/Plus.svg') }}"
-                                            class="w-30p h-30p"></button>
+        <div class="w-11/12 flex justify-center align-center">
+            <div class="bg-white w-full">
+                <div class="flex justify-between mx-5">
+                    <h1 class="font-bold text-xl">Shopping Cart</h1>
+                    <p>{{ Auth::user()->cart()->count() }} Items</p>
+                </div>
+                @foreach ($allCart as $cart)
+                    @include('partials._bar')
+                    <div class="p-5 overflow-y-auto">
+                        <div class="flex justify-between align-center">
+                            <div class="flex">
+                                <img src="{{ asset('assets/img/Razor2.png') }}" class="w-100p" alt="">
+                                <div class="mt-3 flex-col">
+                                    <p class="text-F font-medium">Machine</p>
+                                    <p class="font-bold">{{ $items->where('id', $cart->item_id)->first()->name }}</p>
                                 </div>
                             </div>
-                            <div class="mx-5 flex flex-col justify-center">
-                                <p>{{ $cart->totalPrice }}</p>
+                            <div>
+                                <button class="bg-S font-bold">-</button>
+                                <input type="text" class="bg-gray-300 outline-none font-bol text-center"
+                                    value="{{ $cart->quantity }}">
+                                <button class="bg-S">+</button>
                             </div>
-                            <div class="flex flex-col justify-center w-soc">
-                                <img src="{{ asset('assets/svg/Delete.svg') }}" alt="">
+                            <div class="flex flex-col justify-center">
+                                <p>${{ $cart->totalPrice }}</p>
                             </div>
                         </div>
-                    @endforeach
-                </div>
-            </div>
-            <div class="w-full flex justify-center text-center">
-                <button class="bg-S rounded-2xl font-bold text-P text-xl p-2">Proceed</button>
+                    </div>
+                @endforeach
             </div>
         </div>
     @endauth

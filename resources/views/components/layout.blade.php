@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="{{ asset('assets/js/Store.js') }}"></script>
+    <script src="{{ asset('assets/js/admin.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/booknow.css') }}">
-    </script>
 </head>
 
 <body class="bg-Dark w-full">

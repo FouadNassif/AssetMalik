@@ -106,9 +106,6 @@ function likeReview(id) {
 
 
 
-
-
-
 // function showDesItem(id) {
 //     document.getElementById('itemDes').style.display = 'block';
 //     const quantityInput = document.getElementById('quantity').value = 0;

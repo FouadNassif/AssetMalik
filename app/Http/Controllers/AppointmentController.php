@@ -22,7 +22,7 @@ class AppointmentController extends Controller
             "name" => "required|min:3",
             "phoneNumber" => "required",
             "date" => "required",
-            "time" => "required|unique:appointments",
+            "time" => "required",
             "workerName" => 'required',
         ]);
 

@@ -138,12 +138,14 @@
 
                 })
                 .then(data => {
+                    console.log(data.times)
                     let bookedDates = [];
                     for (let i of data.times) {
                         bookedDates.push(i);
                     }
 
                     sortArrayAsc(bookedDates);
+                    console.log(bookedDates);
 
                     for (let i = 0; i < timeSlots.length; i++) {
                         if (!bookedDates.includes(timeSlots[i])) {
