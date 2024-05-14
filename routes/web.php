@@ -10,25 +10,37 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\ReviewsController;
 
-Route::get('/', function () {return view('barber.home');});
+Route::get('/', function () {
+    return view('barber.home');
+});
 
 // Signup form Register
-Route::get('/signupF', [UserController::class, 'showRegistrationForm']);
+Route::get('/signupF', [UserController::class, 'showRegistrationForm'])->name('register');
 Route::post('/signup', [UserController::class, 'register']);
 
-// Booknow Form Add a book now
-Route::get('/BookNow', [AppointmentController::class, 'showBookNowForm']);
-route::post('/BookNowCheck', [AppointmentController::class, 'BookNow']);
-
 // Login Form Login
-Route::get('/loginF', [UserController::class, 'showLoginForm']);
+Route::get('/loginF', [UserController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
 
-// SHow Profile
-Route::get('/profile', [UserController::class, 'viewAppointments']);
 
-// Logout
-route::post('/logout', [UserController::class, 'logout'])->name("logout");
+Route::middleware('auth')->group(function () {
+    // Booknow Form Add a book now
+    Route::get('/BookNow', [AppointmentController::class, 'showBookNowForm']);
+    route::post('/BookNowCheck', [AppointmentController::class, 'BookNow']);
+
+    // Show Profile
+    Route::get('/profile', [UserController::class, 'viewAppointments']);
+
+    // Logout
+    route::post('/logout', [UserController::class, 'logout'])->name("logout");
+
+    // Show Cart
+    Route::get('/cart', [UserController::class, 'showCart']);
+    Route::post('/addToCart', [CartsController::class, 'addToCart']);
+
+    // Add a review to a item
+    Route::post('/addReview', [ReviewsController::class, 'addReview']);
+});
 
 // Show the Store
 Route::get('/store', [ItemsController::class, 'showAllItems']);
@@ -36,11 +48,6 @@ Route::get('/store', [ItemsController::class, 'showAllItems']);
 // Search a item
 Route::get('store/search', [SearchController::class, 'searchItems'])->name("search");
 Route::get('store/filter', [FilterController::class, 'filterItems'])->name("filter");
-
-// Show Cart
-Route::get('/cart', [UserController::class, 'showCart']);
-Route::post('/addReview', [ReviewsController::class, 'addReview']);
-Route::post('/addToCart', [CartsController::class, 'addToCart']);
 
 Route::get('/admin/appointments', [AdminController::class, 'mainPage']);
 // Show Signle Item

@@ -15,18 +15,27 @@
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Hammersmith+One" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="{{ asset('assets/js/Store.js') }}"></script>
-    <script src="{{ asset('assets/js/admin.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/css/booknow.css') }}">
 </head>
 
 <body class="bg-Dark w-full">
+    @if (session('status'))
+        <div id="notification"
+            class="notification bg-white p-5 border-4 border-primary shadow-lg flex items-center justify-between">
+            <h1>{{ session('status') }}</h1>
+            <button onclick="closeNotification()">X</button>
+            <div class="progress-bar"></div>
+        </div>
+    @endif
     @include('partials._navbar')
-
     <div class="">
         @yield('content')
     </div>
     @include('partials._footer')
+    <link rel="stylesheet" href="{{ asset('assets/css/alert.css') }}">
+    <script src="{{ asset('assets/js/alert.js') }}"></script>
+    <script src="{{ asset('assets/js/Store.js') }}"></script>
+    <script src="{{ asset('assets/js/admin.js') }}"></script>
 </body>
 
 </html>

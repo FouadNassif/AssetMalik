@@ -2,9 +2,9 @@
 @section('title', 'Admin | Book Now')
 
 @section('content')
-<div class="flex justify-center">
-    @include('partials._navAdmin')
-</div>
+    <div class="flex justify-center">
+        @include('partials._navAdmin')
+    </div>
 
     <div class="flex justify-center mt-5">
         <div class="bg-P border-2 rounded-2xl border-S w-11/12">
@@ -54,17 +54,22 @@
                                 <p>{{ $appointment->workerName }}f</p>
                             </div>
                             <div class="text-center w-full">
-                                <select name="status" id="staUpdts" class="text-black font-bold">
-                                    <option value="">{{ $appointment->status }}</option>
-                                    <option value="">Ongoing</option>
-                                    <option value="">Done</option>
+                                <select name="status" id="staUpdts" class="text-black font-bold"
+                                    onchange="changeApoiStatus(this)" data-userName="{{ $appointment->name }}"
+                                    data-time="{{ $appointment->time }}" data-date="{{ $appointment->date }}">
+                                    <option value="pending">{{ $appointment->status }}</option>
+                                    <option value="ongoing">Ongoing</option>
+                                    <option value="done">Done</option>
                                 </select>
                             </div>
                             <div class="text-center w-full">
                                 <p>{{ $appointment->message }}</p>
                             </div>
                             <div class="text-center w-full flex">
-                                <img class="w-10 h-10 mx-auto" src="{{ asset('assets/svg/Delete.svg') }}" alt="">
+                                <button onclick="deleteApoi(this)" data-userName="{{ $appointment->name }}"
+                                    data-time="{{ $appointment->time }}" data-date="{{ $appointment->date }}">
+                                    <img class="w-10h-10 mx-auto" src="{{ asset('assets/svg/Delete.svg') }}">
+                                </button>
                             </div>
                         </div>
                     @endforeach

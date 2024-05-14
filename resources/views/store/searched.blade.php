@@ -5,21 +5,56 @@
 @section('title', 'Search Results')
 
 @section('content')
-    @include('partials._search')
-    <div class="flex flex-wrap p-5">
-        @if (count($data) > 0)
-            @foreach ($data as $item)
-                <button class="bg-transparent border border-S w-80 p-2 m-5 text-left rounded-2xl text-white"
-                    onclick="showDesItem({{ $item['id'] }})">
-                    <img src="{{ asset('assets/img/Razor2.png') }}" alt=""
-                        class="w-fit h-200p rounded-t-2xl ml-12"><br>
-                    <h2 class="font-medium text-xl text-center">{{ $item['name'] }}</h2><br>
-                    <p class="font-bold text-center mb-3">$<span class="font-medium">{{ $item['price'] }}</span></p>
-                </button>
+    <div class="flex justify-center mt-5">
+        <div class="flex justify-center w-full">
+            <div class="w-3/12 border-r-4 h-full p-5">
+                <form id="searchForm" action="{{ route('search') }}" method="GET">
+                    <div class="flex">
+                        @include('partials._search')
+                    </div>
+                    <div class="p-5">
+                        <div>
+                            <p class="text-white font-bold text-2xl">Price</p>
+                            <div class="text-lg text-white ml-3">
+                                <div>
+                                    <input class="border-0" type="radio" id="low_to_high" name="price"
+                                        value="low_to_high" {{ request('price') == 'low_to_high' ? 'checked' : '' }}>
+                                    <label for="low_to_high">Low to High</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="high_to_low" name="price" value="high_to_low"
+                                        {{ request('price') == 'high_to_low' ? 'checked' : '' }}>
+                                    <label for="high_to_low">High to Low</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <script>
+                const radioButtons = document.querySelectorAll('input[type="radio"][name="price"]');
+
+                radioButtons.forEach(radioButton => {
+                    radioButton.addEventListener('change', function() {
+
+                        document.getElementById('searchForm').submit();
+                    });
+                });
+            </script>
+
+
+            <div class="flex flex-wrap p-5 justify-center min-w-3/4">
+                @foreach ($data as $item)
+                    <x-item-card :item="$item" />
+                @endforeach
+            </div>
+            @foreach ($favoriteItemsId as $itemId)
+                <script>
+                    document.getElementById(`favoriteImg_{{ $itemId }}`).src = "{{ asset('assets/svg/Favorites.svg') }}";
+                </script>
             @endforeach
-        @else
-            <h1 class="text-red-600 text-center w-full">No items Found!!</h1>
-        @endif
+        </div>
     </div>
 @endsection
 

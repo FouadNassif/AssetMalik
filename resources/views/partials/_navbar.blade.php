@@ -36,7 +36,6 @@ sticky">
             Now</a>
     </div>
 </nav>
-
 <script>
     window.addEventListener('scroll', function() {
         const navbar = document.getElementById('navbar');
