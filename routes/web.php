@@ -10,25 +10,42 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\ReviewsController;
 
-Route::get('/', function () {return view('barber.home');});
+Route::get('/', function () {
+    return view('barber.home');
+});
+
+Route::get('/contact', function () {
+    return view('barber.contact');
+});
 
 // Signup form Register
-Route::get('/signupF', [UserController::class, 'showRegistrationForm']);
+Route::get('/signup', [UserController::class, 'showRegistrationForm'])->name('register');
 Route::post('/signup', [UserController::class, 'register']);
 
-// Booknow Form Add a book now
-Route::get('/BookNow', [AppointmentController::class, 'showBookNowForm']);
-route::post('/BookNowCheck', [AppointmentController::class, 'BookNow']);
-
 // Login Form Login
-Route::get('/loginF', [UserController::class, 'showLoginForm']);
+Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
 
-// SHow Profile
-Route::get('/profile', [UserController::class, 'viewAppointments']);
+Route::get('/BookNow', [AppointmentController::class, 'showBookNowForm']);
 
-// Logout
-route::post('/logout', [UserController::class, 'logout'])->name("logout");
+
+Route::middleware('auth')->group(function () {
+    // Booknow Form Add a book now
+    route::post('/BookNowCheck', [AppointmentController::class, 'BookNow']);
+
+    // Show Profile
+    Route::get('/profile', [UserController::class, 'viewAppointments']);
+
+    // Logout
+    route::post('/logout', [UserController::class, 'logout'])->name("logout");
+
+    // Show Cart
+    Route::get('/cart', [UserController::class, 'showCart']);
+    Route::post('/addToCart', [CartsController::class, 'addToCart']);
+
+    // Add a review to a item
+    Route::post('/addReview', [ReviewsController::class, 'addReview']);
+});
 
 // Show the Store
 Route::get('/store', [ItemsController::class, 'showAllItems']);
@@ -37,11 +54,14 @@ Route::get('/store', [ItemsController::class, 'showAllItems']);
 Route::get('store/search', [SearchController::class, 'searchItems'])->name("search");
 Route::get('store/filter', [FilterController::class, 'filterItems'])->name("filter");
 
-// Show Cart
-Route::get('/cart', [UserController::class, 'showCart']);
-Route::post('/addReview', [ReviewsController::class, 'addReview']);
-Route::post('/addToCart', [CartsController::class, 'addToCart']);
+Route::get('/admin', [AdminController::class, 'mainPage']);
+Route::get('/admin/appointments', [AdminController::class, 'ShowAllApoi']);
+Route::get('/admin/appointments/filter', [AdminController::class, 'filter'])->name('admin.filter');
+Route::get('/admin/workers', [AdminController::class, 'workers'])->name('admin.workers');
 
-Route::get('/admin/appointments', [AdminController::class, 'mainPage']);
+Route::get('/admin/items', [AdminController::class, 'showAllItems'])->name('admin.items');
+Route::get('/admin/items/create', [AdminController::class, 'createItemPage'])->name('admin.createItemPage');
+Route::post('/admin/items/create', [AdminController::class, 'createItem'])->name('admin.createItem');
+
 // Show Signle Item
 Route::get('/store/{id}', [ItemsController::class, 'showSingleItem']);

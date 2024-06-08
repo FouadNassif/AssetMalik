@@ -1,0 +1,52 @@
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    z-index: 1000;
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 5px;
+    background-color: #006B60;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
+}
+
+.news {
+    width: 70%;
+}
+@media only screen and (max-width: 600px) {
+    #navbarUl {
+        display: none;        
+    }
+
+    #mobileNavBut {
+        display: flex;
+    }
+    .news {
+        width: 90%;
+    }
+
+    .bapCon > div h1 {
+        font-size: 20px;
+    }
+    .bapCon > div p {
+        font-size: 13px;
+    }
+    .bapCon div:last-child img {
+        height: 14rem;
+    }
+  }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Categories;
 use App\Models\Items;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,7 +13,6 @@ class SearchController extends Controller
     {
         // Query all items
         $query = Items::query();
-
         // Apply search filter if search query is present
         if ($request->has('search')) {
             $searchQuery = $request->input('search');
@@ -31,14 +31,24 @@ class SearchController extends Controller
             }
         }
 
+        // Filter items by category if category filter is applied
+        if ($request->has('category')) {
+            $category = $request->input('category');
+            $query->whereHas('category', function ($q) use ($category) {
+                $q->where('name', $category);
+            });
+        }
+
         $data = $query->paginate(10);
 
         if (Auth::user()) {
             $user = Auth::user();
             $userid = $user->id;
             $favoriteItemsId = Auth::user()->favoriteItems()->pluck('items_id')->toArray();
+            return view('store.searched', compact('data', 'favoriteItemsId'));
+        } else {
+            $favoriteItemsId = "null";
+            return view('store.searched', compact('data', 'favoriteItemsId'));
         }
-
-        return view('store.searched', compact('data', 'favoriteItemsId'));
     }
 }

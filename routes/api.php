@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\AdminControllerApi;
 use App\Http\Controllers\Api\CartController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,3 +19,5 @@ Route::post('/addFavoriteItem', [FavoriteItemsController::class, 'addFavoriteIte
 
 Route::post('/likeReview', [ReviewsController::class, 'likeReview']);
 Route::post('/removeLike', [ReviewsController::class, 'removeLikeReview']);
+Route::post('/changeStatus', [AdminControllerApi::class, 'changeApoiStatus']);
+Route::post('/deleteApoi', [AdminControllerApi::class, 'deleteAppointment']);
