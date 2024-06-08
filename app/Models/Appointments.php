@@ -15,6 +15,7 @@ class Appointments extends Model
         'name',
         'phoneNumber',
         'date',
+        'workerName',
         'time',
         'message',
         'status',

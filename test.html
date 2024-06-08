@@ -1,49 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Barbershop Categories</title>
+<style>
+/* Style for the dropdown menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
 
-    ced{
-        color: #363636;
-    }
-    </style>
+/* Style for the dropdown button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Style for the dropdown content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Style for the links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Style for the links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Style for the active category */
+.active {
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
 </head>
-
 <body>
-    <label for="myTime">Select a time:</label>
-    <input type="time" readonly id="t">
-    <div>
-        <button onclick="save(this)">10:00</button>
-        <button onclick="save(this)">10:30</button>
-        <button onclick="save(this)">11:00</button>
-        <button onclick="save(this)">11:30</button>
-        <button onclick="save(this)">12:00</button>
+
+<div class="dropdown">
+  <button class="dropbtn">Categories</button>
+  <div class="dropdown-content">
+    <a href="#" class="active">Haircutting Tools</a>
+    <div class="dropdown">
+      <a href="#">Hair Styling Products</a>
+      <div class="dropdown-content">
+        <a href="#">Hair gel</a>
+        <a href="#">Hair wax</a>
+        <a href="#">Pomade</a>
+        <!-- Add more items as needed -->
+      </div>
     </div>
+    <a href="#">Hair Care Products</a>
+    <a href="#">Beard Care Products</a>
+    <a href="#">Accessories</a>
+    <a href="#">Personal Care Products</a>
+    <a href="#">Gift Sets</a>
+  </div>
+</div>
 
-    <script>
-        let t = document.getElementById("t");
-        document.querySelectorAll
-        function save(button) {
-            t.value = button.textContent;
-        }
-        document.querySelectorAll
-    </script>
-
-    <style>
-        div {
-            display: flex;
-        }
-
-        div button {
-            width: 100px;
-            height: 30px;
-            color: #093136;
-        }
-    </style>
 </body>
-
 </html>

@@ -19,8 +19,8 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '1',
             'quantity' => '99',
-            'raiting' => 5,
-            'category_id' => 4
+            'rating' => 5,
+            'category_id' => fake()->numberBetween(1, 5),
         ]);
 
         Items::create([
@@ -32,8 +32,8 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '11',
             'quantity' => '99',
-            'raiting' => 5,
-            'category_id' => 4
+            'rating' => 5,
+            'category_id' => fake()->numberBetween(1, 5),
         ]);
 
         Items::create([
@@ -45,8 +45,8 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '25435',
             'quantity' => '343',
-            'raiting' => 5,
-            'category_id' => 4
+            'rating' => 5,
+            'category_id' => fake()->numberBetween(1, 5),
         ]);
 
         Items::create([
@@ -58,8 +58,8 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '9349',
             'quantity' => '12',
-            'raiting' => 5,
-            'category_id' => 4
+            'rating' => 5,
+            'category_id' => fake()->numberBetween(1, 5),
         ]);
 
         Items::create([
@@ -71,8 +71,8 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '23',
             'quantity' => '4325',
-            'raiting' => 5,
-            'category_id' => 4
+            'rating' => 5,
+            'category_id' => fake()->numberBetween(1, 5),
         ]);
 
         Items::create([
@@ -84,8 +84,8 @@ class ItemsSeeder extends Seeder
                             necessitatibus similique?',
             'price' => '34',
             'quantity' => '234',
-            'raiting' => 5,
-            'category_id' => 4
+            'rating' => 5,
+            'category_id' => fake()->numberBetween(1, 5),
         ]);
 
         Items::create([
@@ -115,8 +115,8 @@ class ItemsSeeder extends Seeder
             ',
             'price' => '21',
             'quantity' => '99',
-            'raiting' => 5,
-            'category_id' => 4
+            'rating' => 5,
+            'category_id' => fake()->numberBetween(1, 5),
         ]);
     }
 }

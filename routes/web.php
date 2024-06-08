@@ -14,18 +14,23 @@ Route::get('/', function () {
     return view('barber.home');
 });
 
+Route::get('/contact', function () {
+    return view('barber.contact');
+});
+
 // Signup form Register
-Route::get('/signupF', [UserController::class, 'showRegistrationForm'])->name('register');
+Route::get('/signup', [UserController::class, 'showRegistrationForm'])->name('register');
 Route::post('/signup', [UserController::class, 'register']);
 
 // Login Form Login
-Route::get('/loginF', [UserController::class, 'showLoginForm'])->name('login');
+Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [UserController::class, 'login']);
+
+Route::get('/BookNow', [AppointmentController::class, 'showBookNowForm']);
 
 
 Route::middleware('auth')->group(function () {
     // Booknow Form Add a book now
-    Route::get('/BookNow', [AppointmentController::class, 'showBookNowForm']);
     route::post('/BookNowCheck', [AppointmentController::class, 'BookNow']);
 
     // Show Profile
@@ -49,6 +54,14 @@ Route::get('/store', [ItemsController::class, 'showAllItems']);
 Route::get('store/search', [SearchController::class, 'searchItems'])->name("search");
 Route::get('store/filter', [FilterController::class, 'filterItems'])->name("filter");
 
-Route::get('/admin/appointments', [AdminController::class, 'mainPage']);
+Route::get('/admin', [AdminController::class, 'mainPage']);
+Route::get('/admin/appointments', [AdminController::class, 'ShowAllApoi']);
+Route::get('/admin/appointments/filter', [AdminController::class, 'filter'])->name('admin.filter');
+Route::get('/admin/workers', [AdminController::class, 'workers'])->name('admin.workers');
+
+Route::get('/admin/items', [AdminController::class, 'showAllItems'])->name('admin.items');
+Route::get('/admin/items/create', [AdminController::class, 'createItemPage'])->name('admin.createItemPage');
+Route::post('/admin/items/create', [AdminController::class, 'createItem'])->name('admin.createItem');
+
 // Show Signle Item
 Route::get('/store/{id}', [ItemsController::class, 'showSingleItem']);

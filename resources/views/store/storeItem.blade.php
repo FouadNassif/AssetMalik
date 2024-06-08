@@ -6,8 +6,8 @@
                     @include('partials._search')
                 </div>
                 <div class="p-5">
-                    <div>
-                        <p class="text-white font-bold text-2xl">Price</p>
+                    <div class="mt-5">
+                        <p class="text-white font-bold text-2xl">Sort by Price</p>
                         <div class="text-lg text-white ml-3">
                             <div>
                                 <input class="border-0" type="radio" id="low_to_high" name="price"
@@ -21,12 +21,46 @@
                             </div>
                         </div>
                     </div>
+
+
+                    <div class="mt-5">
+                        <p class="text-white font-bold text-2xl">Haircutting Tools</p>
+                        <div class="text-lg text-white ml-3">
+                            <div>
+                                <input class="border-0" type="radio" id="Scissors" name="category" value="Scissors"
+                                    {{ request('category') == 'Scissors' ? 'checked' : '' }}>
+                                <label for="Scissors">Scissors</label>
+                            </div>
+                            <div>
+                                <input class="border-0" type="radio" id="Clippers" name="category" value="Clippers"
+                                    {{ request('category') == 'Clippers' ? 'checked' : '' }}>
+                                <label for="Clippers">Clippers</label>
+                            </div>
+                            <div>
+                                <input class="border-0" type="radio" id="Trimmers" name="category" value="Trimmers"
+                                    {{ request('category') == 'Trimmers' ? 'checked' : '' }}>
+                                <label for="Trimmers">Trimmers</label>
+                            </div>
+
+                            <div>
+                                <input class="border-0" type="radio" id="Razors" name="category" value="Razors"
+                                    {{ request('category') == 'Razors' ? 'checked' : '' }}>
+                                <label for="Razors">Razors</label>
+                            </div>
+
+                            <div>
+                                <input class="border-0" type="radio" id="Shears" name="category" value="Shears"
+                                    {{ request('category') == 'Shears' ? 'checked' : '' }}>
+                                <label for="Shears">Shears</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
 
         <script>
-            const radioButtons = document.querySelectorAll('input[type="radio"][name="price"]');
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
 
             radioButtons.forEach(radioButton => {
                 radioButton.addEventListener('change', function() {
@@ -42,10 +76,12 @@
                 <x-item-card :item="$item" />
             @endforeach
         </div>
-        @foreach ($favoriteItemsId as $itemId)
-            <script>
-                document.getElementById(`favoriteImg_{{ $itemId }}`).src = "{{ asset('assets/svg/Favorites.svg') }}";
-            </script>
-        @endforeach
+        @if ($favoriteItemsId != "null")
+            @foreach ($favoriteItemsId as $itemId)
+                <script>
+                    document.getElementById(`favoriteImg_{{ $itemId }}`).src = "{{ asset('assets/svg/Favorites.svg') }}";
+                </script>
+            @endforeach
+        @endif
     </div>
 </div>

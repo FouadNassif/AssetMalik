@@ -25,7 +25,6 @@ class AppointmentController extends Controller
             "time" => "required",
             "workerName" => 'required',
         ]);
-
         if (Auth::check()) {
             $user = Auth::user();
             $appointment = $user->appointments()->create([

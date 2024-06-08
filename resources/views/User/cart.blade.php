@@ -18,7 +18,7 @@
                                 <div class="flex">
                                     <img src="{{ asset('assets/img/Razor2.png') }}" class="w-100p" alt="">
                                     <div class="mt-3 flex-col">
-                                        <p class="text-F font-medium">Machine</p>
+                                        <p class="text-F font-medium">{{ $items->where('id', $cart->item_id)->first()->category->name }}</p>
                                         <p class="font-bold">{{ $items->where('id', $cart->item_id)->first()->name }}</p>
                                     </div>
                                 </div>

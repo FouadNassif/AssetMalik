@@ -15,6 +15,7 @@ class Items extends Model
         'description',
         'price',
         'quantity',
+        'category_id',
     ];
 
     public function favoriteByUsers()
@@ -24,5 +25,11 @@ class Items extends Model
     public function reviews()
     {
         return $this->hasMany(Reviews::class);
+    }
+
+    // Items.php (Model)
+    public function category()
+    {
+        return $this->belongsTo(Categories::class);
     }
 }

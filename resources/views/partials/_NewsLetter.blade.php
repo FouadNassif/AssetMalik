@@ -7,9 +7,3 @@
         </div>
     </div>
 </div>
-
-<style>
-    .news {
-        width: 70%;
-    }
-</style>

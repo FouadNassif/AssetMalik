@@ -6,6 +6,16 @@
     --F: #086F7B;
 }
 
+.pagination-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.pagination-container .page-link {
+    color: #F5D57E; /* Replace #your-color with your desired color */
+}
+
 /* 
 .flatpickr-calendar {
     background-color: transparent;

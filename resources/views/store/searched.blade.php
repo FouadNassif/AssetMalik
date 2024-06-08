@@ -49,11 +49,13 @@
                     <x-item-card :item="$item" />
                 @endforeach
             </div>
-            @foreach ($favoriteItemsId as $itemId)
-                <script>
-                    document.getElementById(`favoriteImg_{{ $itemId }}`).src = "{{ asset('assets/svg/Favorites.svg') }}";
-                </script>
-            @endforeach
+            @if ($favoriteItemsId != 'null')
+                @foreach ($favoriteItemsId as $itemId)
+                    <script>
+                        document.getElementById(`favoriteImg_{{ $itemId }}`).src = "{{ asset('assets/svg/Favorites.svg') }}";
+                    </script>
+                @endforeach
+            @endif
         </div>
     </div>
 @endsection

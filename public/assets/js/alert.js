@@ -22,3 +22,16 @@ function closeNotificationApi() {
         window.location.reload();
     }
 }
+
+
+let mobileNavLinks = document.getElementById("mobileNavLinks");
+document.getElementById("mobileNavBut").addEventListener("click", function () {
+
+    if (mobileNavLinks.classList.contains('hidden')) {
+        mobileNavLinks.classList.remove('hidden');
+        mobileNavLinks.classList.add('flex');
+    } else {
+        mobileNavLinks.classList.add('hidden');
+        mobileNavLinks.classList.remove('flex');
+    }
+})

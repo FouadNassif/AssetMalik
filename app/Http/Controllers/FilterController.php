@@ -17,10 +17,15 @@ class FilterController extends Controller
             } elseif ($request->price == 'high_to_low') {
                 $query->orderBy('price', 'desc');
             }
+        } else if ($request->has('category')) {
+            if ($request->category == 'Razzors') {
+                $query->orderBy('category_id');
+            } elseif ($request->price == 'high_to_low') {
+                $query->orderBy('price', 'desc');
+            }
+
+            $data = $query->paginate(10);
+            return view('store.filtered', compact('data'));
         }
-
-        $data = $query->paginate(10);
-
-        return view('store.filtered', compact('data'));
     }
 }

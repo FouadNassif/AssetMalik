@@ -6,14 +6,24 @@
         <div>
             <h2 class="font-medium text-xl text-center">{{ $item->name }}</h2>
             <p class="text-center mt-3">${{ $item->price }}</p>
+            <p class="text-center mt-3 text-HS">{{ optional($item->category)->name }}</p>
         </div>
     </a>
     <div class="flex px-1 justify-between">
-        <button type="button" value="{{ $item->id }}" onclick="addFavoriteItem(this, {{ auth()->user()->id }})">
-            <img class="w-8" id="favoriteImg_{{ $item->id }}" src="{{ asset('assets/svg/Favorite.svg') }}"
-                data-favorite="{{ asset('assets/svg/Favorites.svg') }}"
-                data-unfavorite="{{ asset('assets/svg/Favorite.svg') }}">
-        </button>
+        @auth
+            <button type="button" value="{{ $item->id }}" onclick="addFavoriteItem(this, {{ auth()->user()->id }})">
+                <img class="w-8" id="favoriteImg_{{ $item->id }}" src="{{ asset('assets/svg/Favorite.svg') }}"
+                    data-favorite="{{ asset('assets/svg/Favorites.svg') }}"
+                    data-unfavorite="{{ asset('assets/svg/Favorite.svg') }}">
+            </button>
+        @endauth
+        @guest
+            <a type="button" value="{{ $item->id }}" class="cursor-pointer" href="/login">
+                <img class="w-8" id="favoriteImg_{{ $item->id }}" src="{{ asset('assets/svg/Favorite.svg') }}"
+                    data-favorite="{{ asset('assets/svg/Favorites.svg') }}"
+                    data-unfavorite="{{ asset('assets/svg/Favorite.svg') }}">
+            </a>
+        @endguest
         <button onclick="shareButton(`http://127.0.0.1:8000/store/{{ $item->id }}`)" value="" type="button"
             id="shareButton">
             <img src="{{ asset('assets/svg/Share.svg') }}" class="w-7">

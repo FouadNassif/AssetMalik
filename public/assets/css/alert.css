@@ -24,3 +24,29 @@
         width: 0%;
     }
 }
+
+.news {
+    width: 70%;
+}
+@media only screen and (max-width: 600px) {
+    #navbarUl {
+        display: none;        
+    }
+
+    #mobileNavBut {
+        display: flex;
+    }
+    .news {
+        width: 90%;
+    }
+
+    .bapCon > div h1 {
+        font-size: 20px;
+    }
+    .bapCon > div p {
+        font-size: 13px;
+    }
+    .bapCon div:last-child img {
+        height: 14rem;
+    }
+  }

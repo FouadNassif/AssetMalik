@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->default('0');
-            $table->string("workerName")->default("none");
+            $table->string("workerName");
             $table->string('name');
             $table->string('phoneNumber');
             $table->string('date');
