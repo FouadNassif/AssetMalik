@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Carts;
 use App\Models\User;
 use App\Models\Items;
 use App\Models\Reviews;
@@ -97,5 +98,21 @@ class UserController extends Controller
             $items = Items::find($itemId);
         }
         return view('user.cart', compact('items', 'allCart'));
+    }
+
+    public function deleteItem(Request $request){
+        $body = $request->all();
+        if (isset($body['cartItemId'])) {
+            $deleted = Carts::where('user_id', Auth::user()->id)->where('item_id', $body['cartItemId'])->delete();
+            if($deleted){
+                return response()->json([
+                    's' => 't'
+                ]);
+            } else {
+                return response()->json([
+                    's' => 'f'
+                ]);
+            }
+        }
     }
 }

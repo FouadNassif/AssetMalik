@@ -18,6 +18,10 @@ Route::get('/contact', function () {
     return view('barber.contact');
 });
 
+Route::get('/Location', function () {
+    return view('barber.location');
+});
+
 // Signup form Register
 Route::get('/signup', [UserController::class, 'showRegistrationForm'])->name('register');
 Route::post('/signup', [UserController::class, 'register']);
@@ -41,6 +45,7 @@ Route::middleware('auth')->group(function () {
 
     // Show Cart
     Route::get('/cart', [UserController::class, 'showCart']);
+    Route::post('/cart/deleteItem', [UserController::class, 'deleteItem']);
     Route::post('/addToCart', [CartsController::class, 'addToCart']);
 
     // Add a review to a item
